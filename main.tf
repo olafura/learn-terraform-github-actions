@@ -3,9 +3,9 @@
 
 terraform {
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.52.0"
+    google = {
+      source = "hashicorp/google"
+      version = "4.51.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -15,7 +15,7 @@ terraform {
   required_version = ">= 1.1.0"
 
   cloud {
-    organization = "REPLACE_ME"
+    organization = "olafurara-org"
 
     workspaces {
       name = "learn-terraform-github-actions"
@@ -23,8 +23,10 @@ terraform {
   }
 }
 
-provider "aws" {
-  region = "us-west-2"
+provider "google" {
+  project     = "my-project-id"
+  region      = "us-central1"
+  zone        = "us-central1-c"
 }
 
 resource "random_pet" "sg" {}
